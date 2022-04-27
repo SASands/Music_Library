@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import DiplayMusic from './Components/DisplayMusicTable/DisplayMusic';
+
 // todo 
 // make DisplayMusic.jsx component to hold our table you started making below
 // you will need to pass in the songs variable into the component to have access to it, example below
@@ -29,35 +31,13 @@ useEffect(() => {
 
   }
 
+
   
 
   return (
-    <div>
-      {/* here is an exmaple of calling a DisplayMusic component and passing in our songs variable as "props"
-      before this will work you will also need to import the component at the very top of the file */}
-      {/* <DisplayMusic songs={songs} />>  */}
-        <table>
-          <thead>
-            <tr>
-              <th>Artist</th>
-              <th>Title</th>
-              <th>Album</th>
-              <th>Release Date</th>
-              <th>Genre</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>ID</td>
-              <td>Album_Image</td>
-              <td>Likes</td>
-          </tr>
-          </tbody>
-          
-        </table>
-      </div>
-  
-  
+    <div className='border-box'>
+     <DiplayMusic songs={songs} />
+    </div>
   );
 }
 
