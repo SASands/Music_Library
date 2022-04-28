@@ -1,6 +1,25 @@
 
+.Header {
+
+    font-style: italic; border-color: black; background-color: blanchedalmond; border-color: black;
+
+}
+
+.searchBar {
+    box-shadow: dimgray;
+}
 
 .table_image {
     height: 75px;
     width: 75px;
 }
+
+.MusicBody{
+   
+}
+
+.TableRow{
+    background-color: aliceblue;
+
+}
+
