@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import DiplayMusic from './Components/DisplayMusicTable/DisplayMusic';
-
+import AddSongForm from './Components/AddNewSongForm/AddSongForm';
 // todo 
 // make DisplayMusic.jsx component to hold our table you started making below
 // you will need to pass in the songs variable into the component to have access to it, example below
@@ -19,25 +19,35 @@ function App() {
 useEffect(() => {
   getAllSongs();
 },[])
-  
-  async function getAllSongs(){  // grabbing all song data
-    // await is telling react that what is happening in this function might take longer than a normal function 
-    // response is catching the data being sent back from the Django API
-    // .get is our method type, we would need to say .put, .delete .post right after axios to change the type of request
-    let response = await axios.get('http://127.0.0.1:8000/api/music/');
-    console.log("ran axios request")
-    console.log(response.data);
-    setSongs(response.data);
 
+
+async function getAllSongs(){  // grabbing all song data
+  // await is telling react that what is happening in this function might take longer than a normal function 
+  // response is catching the data being sent back from the Django API
+  // .get is our method type, we would need to say .put, .delete .post right after axios to change the type of request
+  let response = await axios.get('http://127.0.0.1:8000/api/music/');
+  console.log("ran axios request")
+  console.log(response.data);
+  setSongs(response.data);
+}
+
+
+async function createSong(newSong){
+  let response = await axios.post('http://127.0.0.1:8000/api/music/', newSong);
+  console.log(response.data);
+  if (response.status === 201) {
+    getAllSongs()
   }
-
+}
 
   
 
   return (
     <div className='border-box'>
-     <DiplayMusic songs={songs} />
+     <AddSongForm createSong={createSong}/>
+     <DiplayMusic songs={songs}/>
     </div>
+
   );
 }
 
